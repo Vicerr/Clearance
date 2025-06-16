@@ -83,17 +83,12 @@ async function loadBlog() {
     try {
         const res = await fetch("landing-page-blog.json")
         const blogPost = await res.json()
-        console.log(blogPost)
-
         renderBlog(blogPost)
-    } catch (e) {
-        console.log(e)
-    }
+    } catch (e) {}
 }
 function renderBlog(blogPosts) {
     blogPosts.forEach((blogPost) => {
         const templateClone = template.content.cloneNode(true)
-        console.log("Template clone content:", templateClone)
         templateClone.querySelector(".blog-post-title").textContent = blogPost.title
         templateClone.querySelector(".blog-post-date").textContent = blogPost.date
         templateClone.querySelector(".blog-post-description").textContent = blogPost.description
@@ -104,5 +99,70 @@ function renderBlog(blogPosts) {
         blogContainer.appendChild(templateClone)
     })
 }
+blogContainer || template ? loadBlog() : null
 
-loadBlog()
+// search functionality
+
+function debounce(func) {
+    let timeout
+    return function (...args) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            func.apply(this, args)
+        }, 300)
+    }
+}
+const search = document.getElementById("search-bar")
+// reset search on page refresh
+search ? (search.value = "") : null
+
+function searchFunction() {
+    const searchInputValue = search.value.toLowerCase()
+    const articles = document.querySelectorAll("article > h3")
+    articles.forEach((article) => {
+        article.closest("article").classList.remove("hidden")
+        let articleTitle = article.textContent.toLowerCase()
+        articleTitle.includes(searchInputValue)
+            ? ""
+            : article.closest("article").classList.add("hidden")
+    })
+}
+const searchButton = document.getElementById("search-button")
+
+const debouncedFilter = debounce(searchFunction)
+// if you want to filter on each input typed uncomment the below
+search?.addEventListener("input", debouncedFilter)
+searchButton?.addEventListener("click", debouncedFilter)
+
+// native sharing on mobile
+const currentUrl = window.location.href
+
+const shareData = {
+    title: document.title,
+    text: "Check out this blog post:",
+    url: currentUrl,
+}
+
+document.getElementById("shareButton")?.addEventListener("click", async () => {
+    if (navigator.share) {
+        try {
+            await navigator.share(shareData)
+            console.log("Link shared successfully!")
+        } catch (err) {
+            console.error("Error sharing:", err)
+        }
+    } else {
+        alert("Sharing is not supported on this browser.")
+    }
+})
+
+// copy link to clipboard
+document.getElementById("copyButton")?.addEventListener("click", async () => {
+    try {
+        await navigator.clipboard.writeText(shareData.url)
+        alert("Link copied to clipboard!")
+    } catch (err) {
+        console.error("Failed to copy link:", err)
+        alert("Could not copy the link.")
+    }
+})

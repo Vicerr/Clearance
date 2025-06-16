@@ -1,44 +1,44 @@
 [
     {
         "image": "images/6706379_3418448 1.png",
-        "title": "Cyber security",
-        "description": "text is very very long",
+        "title": "Cybersecurity for Beginners",
+        "description": "Learn the basics of staying safe online and protecting your personal data.",
         "link": "blogpost.html",
-        "date": "may 29th, 2025"
+        "date": "January 8th, 2025"
     },
     {
         "image": "images/6706379_3418448 1.png",
-        "title": "Cyber security",
-        "description": "text is very very long",
+        "title": "Future of Remote Work",
+        "description": "A deep dive into the evolving remote work culture and its impact on productivity.",
         "link": "blogpost.html",
-        "date": "may 29th, 2025"
+        "date": "February 12th, 2025"
     },
     {
         "image": "images/6706379_3418448 1.png",
-        "title": "Cyber security",
-        "description": "text is very very long",
+        "title": "Blockchain Beyond Crypto",
+        "description": "Understand how blockchain is transforming industries beyond cryptocurrencies.",
         "link": "blogpost.html",
-        "date": "may 29th, 2025"
+        "date": "March 22nd, 2025"
     },
     {
         "image": "images/6706379_3418448 1.png",
-        "title": "Cyber security",
-        "description": "text is very very long",
+        "title": "AI in Everyday Life",
+        "description": "Explore how artificial intelligence is integrated into daily apps, tools, and services.",
         "link": "blogpost.html",
-        "date": "may 29th, 2025"
+        "date": "April 5th, 2025"
     },
     {
         "image": "images/6706379_3418448 1.png",
-        "title": "Cyber security",
-        "description": "text is very very long",
+        "title": "The Rise of Quantum Computing",
+        "description": "Discover what quantum computing is and how it could change the tech world.",
         "link": "blogpost.html",
-        "date": "may 29th, 2025"
+        "date": "May 15th, 2025"
     },
     {
         "image": "images/6706379_3418448 1.png",
-        "title": "Cyber security",
-        "description": "text is very very long",
+        "title": "Ethics in AI Development",
+        "description": "Why ethical considerations are essential in building responsible AI systems.",
         "link": "blogpost.html",
-        "date": "may 29th, 2025"
+        "date": "June 1st, 2025"
     }
 ]
