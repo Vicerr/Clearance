@@ -52,7 +52,7 @@ closeMenu.addEventListener("click", closeMobileMenu)
 mobileLinks.forEach((link) => {
     link.addEventListener("click", closeMobileMenu)
 })
-function countUpUnified(el, duration =1000, decimals = 2) {
+function countUpUnified(el, duration = 1000, decimals = 2) {
     const target = parseFloat(el.dataset.target)
     const isDecimal = target % 1 !== 0
     const frameRate = 60 // 60 FPS
@@ -63,7 +63,9 @@ function countUpUnified(el, duration =1000, decimals = 2) {
         frame++
         const progress = frame / totalFrames
         const current = target * progress
-        el.textContent = isDecimal ? current.toFixed(decimals) : Math.round(current).toLocaleString()
+        el.textContent = isDecimal
+            ? current.toFixed(decimals)
+            : Math.round(current).toLocaleString()
 
         if (frame >= totalFrames) {
             el.textContent = isDecimal ? target.toFixed(decimals) : target.toLocaleString()
@@ -72,4 +74,35 @@ function countUpUnified(el, duration =1000, decimals = 2) {
     }, 1000 / frameRate)
 }
 
-document.addEventListener("DOMContentLoaded", () => {})
+// document.addEventListener("DOMContentLoaded", () => {})
+
+// BLOG JSON
+const blogContainer = document.getElementById("landing-page-blog-posts")
+const template = document.getElementById("blog-template")
+async function loadBlog() {
+    try {
+        const res = await fetch("landing-page-blog.json")
+        const blogPost = await res.json()
+        console.log(blogPost)
+
+        renderBlog(blogPost)
+    } catch (e) {
+        console.log(e)
+    }
+}
+function renderBlog(blogPosts) {
+    blogPosts.forEach((blogPost) => {
+        const templateClone = template.content.cloneNode(true)
+        console.log("Template clone content:", templateClone)
+        templateClone.querySelector(".blog-post-title").textContent = blogPost.title
+        templateClone.querySelector(".blog-post-date").textContent = blogPost.date
+        templateClone.querySelector(".blog-post-description").textContent = blogPost.description
+        const link = templateClone.querySelector(".blog-post-link")
+        link.setAttribute("href", blogPost.link)
+        const image = templateClone.querySelector(".blog-post-image")
+        image.setAttribute("src", blogPost.image)
+        blogContainer.appendChild(templateClone)
+    })
+}
+
+loadBlog()
