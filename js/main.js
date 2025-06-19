@@ -7,7 +7,7 @@ const blogContainer = document.getElementById("landing-page-blog-posts")
 const template = document.getElementById("blog-template")
 const searchButton = document.getElementById("search-button")
 const search = document.getElementById("search-bar")
-const items = document.querySelectorAll("article")
+const items = document.querySelectorAll(".article")
 const pageNumbers = document.getElementById("page-numbers")
 const prevBtn = document.getElementById("prev")
 const nextBtn = document.getElementById("next")
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const itemsPerPage = 6
     let currentPage = 1
 
-    // Calculate total pages
+    // // Calculate total pages
     const totalPages = Math.ceil(items?.length / itemsPerPage)
 
     // Display items for current page
@@ -124,11 +124,10 @@ document.addEventListener("DOMContentLoaded", () => {
             item.classList.toggle("hidden", !(index >= start && index < end))
         })
     }
-    if (!pageNumbers || !prevBtn || !nextBtn) {
-        return null
-    }
+
     // Update pagination buttons
     function updatePagination() {
+        if (!pageNumbers) return null
         pageNumbers.innerHTML = ""
 
         for (let i = 1; i <= totalPages; i++) {
