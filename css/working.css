@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@layer base {
+    :root {
+        --primary-color: #14061c;
+        --accent-color: #471863;
+        --secondary-color: #f194b4;
+    }
+}
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    margin-inline: auto;
+    max-width: 1920px;
+}
+
+.hero-image-service {
+    background-image: url("../images/Mask\ group.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 400px top;
+}
+.hero-image-about {
+    background-image: url("../images/Mask\ group.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 400px top;
+}
+.hero-image {
+    background-image: linear-gradient(to right, transparent, #47186300, #47186366), url("../images/Frame 5635.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+.purple-overlay {
+    background-image: linear-gradient(to right, transparent, #47186300, #47186366);
+}
+
+.side-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.italic-text-header {
+    font-family: "Lora", serif;
+    font-weight: 500;
+    color: var(--accent-color);
+    font-style: italic;
+}
+.italic-text {
+    font-family: "Lora", serif;
+    font-weight: 500;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+.italic {
+    font-family: "Lora", serif;
+    font-weight: 500;
+    font-style: italic;
+}
+.container-custom {
+    max-width: min(75rem, 90%);
+    margin-inline: auto;
+}
+.custom-box-shadow {
+    box-shadow: 0px 6px 10.6px 0px #00000012;
+}
+/* animations.css */
+
+@keyframes slide-up-fade {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-left-fade {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-right-fade {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.before-animate {
+    opacity: 0;
+    /* No animation here */
+}
+
+/* Your animation classes unchanged */
+.slide-up-fade {
+    animation: slide-up-fade 0.6s ease-out forwards;
+}
+
+.slide-left-fade {
+    animation: slide-left-fade 0.6s ease-out forwards;
+}
+
+.slide-right-fade {
+    animation: slide-right-fade 0.6s ease-out forwards;
+}
+.smaller{
+    font-size: 9.5px;
+  }
